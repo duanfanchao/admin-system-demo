@@ -1,0 +1,10 @@
+@import "./variables.scss";
+
+body.dark-theme {
+  --text-color: pink;
+  --text-color-hover: #fff;
+  --text-color-active: #ffffff;
+  --background-color: #141414;
+  --background-color-active: #409eff;
+  --border-color: pink;
+}

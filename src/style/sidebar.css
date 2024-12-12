@@ -1,0 +1,533 @@
+@charset "UTF-8";
+/* $sideBarWidth: vertical 模式下主体内容距离网页文档左侧的距离 */
+body[layout="vertical"] {
+  /* 修复 windows 下双滚动条问题 https://github.com/pure-admin/vue-pure-admin/pull/936#issuecomment-1968125992 */
+  /* popper menu 超出内容区可滚动 */
+  /* vertical 菜单折叠 */
+  /* horizontal 菜单 */
+  /* 搜索 */
+}
+
+@media screen and (min-width: 150px) and (max-width: 420px) {
+  body[layout="vertical"] .app-main-nofixed-header {
+    overflow-y: hidden;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  body[layout="vertical"] .app-main-nofixed-header {
+    overflow: hidden;
+  }
+}
+
+body[layout="vertical"] .el-popper.pure-scrollbar {
+  overflow: hidden;
+}
+
+body[layout="vertical"] .pure-scrollbar {
+  max-height: calc(100vh - calc(50px * 2.5));
+  overflow: hidden auto;
+}
+
+body[layout="vertical"] .sub-menu-icon {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+body[layout="vertical"] .sub-menu-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+body[layout="vertical"] .set-icon,
+body[layout="vertical"] .fullscreen-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 48px;
+  cursor: pointer;
+}
+
+body[layout="vertical"] .main-container {
+  position: relative;
+  height: 100vh;
+  min-height: 100%;
+  margin-left: 210px;
+  background: #f0f2f5;
+  /* main-content 属性动画 */
+  transition: margin-left var(--pure-transition-duration);
+}
+
+body[layout="vertical"] .main-container .el-scrollbar__wrap {
+  height: 100%;
+  overflow: auto;
+}
+
+body[layout="vertical"] .fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 998;
+  width: calc(100% - 210px);
+  /* fixed-header 属性左上角动画 */
+  transition: width var(--pure-transition-duration);
+}
+
+body[layout="vertical"] .main-hidden {
+  margin-left: 0 !important;
+}
+
+body[layout="vertical"] .main-hidden .fixed-header {
+  width: 100% !important;
+}
+
+body[layout="vertical"] .main-hidden .fixed-header + .app-main {
+  padding-top: 37px !important;
+}
+
+body[layout="vertical"] .sidebar-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  width: 210px !important;
+  height: 100%;
+  overflow: visible;
+  font-size: 0;
+  background: #fff;
+  border-right: 1px solid rgba(5, 5, 5, 0.06);
+  /* 展开动画 */
+  transition: width var(--pure-transition-duration);
+  /* 有子集的激活菜单左侧小竖条 */
+  /* 无子集的激活菜单背景 */
+}
+
+body[layout="vertical"] .sidebar-container .scrollbar-wrapper {
+  overflow-x: hidden !important;
+}
+
+body[layout="vertical"] .sidebar-container .el-scrollbar__bar.is-vertical {
+  right: 0;
+}
+
+body[layout="vertical"] .sidebar-container.has-logo {
+  /* logo: 48px */
+}
+
+body[layout="vertical"] .sidebar-container.has-logo .el-scrollbar.pc {
+  /* logo: 48px、leftCollapse: 40px、leftCollapse-shadow: 4px */
+  height: calc(100% - 92px);
+}
+
+body[layout="vertical"] .sidebar-container.has-logo .el-scrollbar.mobile {
+  height: calc(100% - 48px);
+}
+
+body[layout="vertical"] .sidebar-container.no-logo .el-scrollbar.pc {
+  /* leftCollapse: 40px、leftCollapse-shadow: 4px */
+  height: calc(100% - 44px);
+}
+
+body[layout="vertical"] .sidebar-container.no-logo .el-scrollbar.mobile {
+  height: 100%;
+}
+
+body[layout="vertical"] .sidebar-container .is-horizontal {
+  display: none;
+}
+
+body[layout="vertical"] .sidebar-container a {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+body[layout="vertical"] .sidebar-container .el-menu {
+  height: 100%;
+  border: none;
+}
+
+body[layout="vertical"] .sidebar-container .el-menu-item.is-active.nest-menu::before {
+  position: absolute;
+  inset: 0 8px;
+  margin: 4px 0;
+  clear: both;
+  content: "";
+  border-radius: 3px;
+}
+
+body[layout="vertical"] .sidebar-container .el-menu .el-menu--inline .el-sub-menu__title,
+body[layout="vertical"] .sidebar-container .el-sub-menu .el-menu-item {
+  min-width: 210px !important;
+  font-size: 14px;
+}
+
+body[layout="vertical"] .sidebar-container .el-menu--collapse
+.is-active.outer-most.el-sub-menu
+> .el-sub-menu__title::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  clear: both;
+  content: "";
+  transition: all var(--pure-transition-duration) ease-in-out;
+  transform: translateY(0);
+}
+
+body[layout="vertical"] .sidebar-container .el-menu--collapse .outer-most.el-sub-menu > .el-sub-menu__title::before {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 3px;
+  height: 0;
+  content: "";
+  transform: translateY(-50%);
+}
+
+body[layout="vertical"] .el-menu--vertical {
+  /* 子菜单中还有子菜单 */
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu--popup .el-menu-item span {
+  font-size: 14px;
+}
+
+body[layout="vertical"] .el-menu--vertical > .el-menu i,
+body[layout="vertical"] .el-menu--vertical > .el-menu svg {
+  margin-right: 5px;
+}
+
+body[layout="vertical"] .el-menu--vertical .is-active > .el-sub-menu__title,
+body[layout="vertical"] .el-menu--vertical .is-active.submenu-title-noDropdown {
+  color: #409eff !important;
+}
+
+body[layout="vertical"] .el-menu--vertical .is-active > .el-sub-menu__title i,
+body[layout="vertical"] .el-menu--vertical .is-active.submenu-title-noDropdown i {
+  color: #409eff !important;
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu .el-sub-menu__title {
+  min-width: 210px !important;
+  font-size: 14px;
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu-item,
+body[layout="vertical"] .el-menu--vertical .el-sub-menu__title {
+  height: 50px;
+  line-height: 50px;
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu-item.is-active {
+  background-color: #c2ddffcc !important;
+}
+
+body[layout="vertical"] .el-menu--vertical .is-opened {
+  background-color: transparent !important;
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu-item.is-active.nest-menu > * {
+  z-index: 1;
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu-item.is-active.nest-menu::before {
+  position: absolute;
+  inset: 0 8px;
+  clear: both;
+  content: "";
+  border-radius: 3px;
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu-item .iconfont,
+body[layout="vertical"] .el-menu--vertical .el-sub-menu .iconfont {
+  font-size: 18px;
+}
+
+body[layout="vertical"] .el-menu--vertical .el-menu-item .el-menu-tooltip__trigger,
+body[layout="vertical"] .el-menu--vertical .el-sub-menu .el-menu-tooltip__trigger {
+  width: 54px;
+  padding: 0;
+}
+
+body[layout="vertical"] .el-menu--horizontal {
+  /* 无子菜单时激活 border-bottom */
+  /* 子菜单中还有子菜单 */
+}
+
+body[layout="vertical"] .el-menu--horizontal > .el-sub-menu .el-sub-menu__icon-arrow {
+  position: static !important;
+  margin-top: 0;
+}
+
+body[layout="vertical"] .el-menu--horizontal a > .is-active.submenu-title-noDropdown {
+  border-bottom: 2px solid var(--el-menu-active-color);
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu--popup {
+  background-color: #fff !important;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu--popup a > .is-active.submenu-title-noDropdown {
+  border-bottom: none;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu--popup .el-menu-item {
+  color: "rgb(0 0 0 / 60%)";
+  background-color: #fff;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu--popup .el-menu-item span {
+  font-size: 14px;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu--popup .el-sub-menu__title {
+  color: "rgb(0 0 0 / 60%)";
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu .el-sub-menu__title {
+  min-width: 210px !important;
+  font-size: 14px;
+  background-color: #fff !important;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu .el-sub-menu__title:hover {
+  color: #000 !important;
+}
+
+body[layout="vertical"] .el-menu--horizontal .is-active > .el-sub-menu__title,
+body[layout="vertical"] .el-menu--horizontal .is-active.submenu-title-noDropdown {
+  color: #000000 !important;
+}
+
+body[layout="vertical"] .el-menu--horizontal .is-active > .el-sub-menu__title i,
+body[layout="vertical"] .el-menu--horizontal .is-active.submenu-title-noDropdown i {
+  color: #000000 !important;
+}
+
+body[layout="vertical"] .el-menu--horizontal .nest-menu .el-sub-menu > .el-sub-menu__title:hover,
+body[layout="vertical"] .el-menu--horizontal .el-menu-item:hover {
+  color: #000 !important;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu-item.is-active {
+  color: #000000 !important;
+  transition: color 0.3s;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu-item.is-active.nest-menu > * {
+  z-index: 1;
+  color: #fff;
+}
+
+body[layout="vertical"] .el-menu--horizontal .el-menu-item.is-active.nest-menu::before {
+  position: absolute;
+  inset: 0 5px;
+  clear: both;
+  content: "";
+  background: var(--el-color-primary) !important;
+  border-radius: 3px;
+}
+
+body[layout="vertical"] .horizontal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 48px;
+  background: #fff;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-left {
+  display: flex;
+  align-items: center;
+  width: auto;
+  min-width: 200px;
+  height: 100%;
+  padding-left: 10px;
+  cursor: pointer;
+  transition: all var(--pure-transition-duration) ease;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-left img {
+  display: inline-block;
+  height: 32px;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-left span {
+  display: inline-block;
+  height: 32px;
+  margin: 2px 0 0 12px;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-menu {
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 340px;
+  color: #000000;
+  /* 搜索 */
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-right .search-container:hover,
+body[layout="vertical"] .horizontal-header .horizontal-header-right .globalization:hover,
+body[layout="vertical"] .horizontal-header .horizontal-header-right .fullscreen-icon:hover,
+body[layout="vertical"] .horizontal-header .horizontal-header-right .dropdown-badge:hover,
+body[layout="vertical"] .horizontal-header .horizontal-header-right .el-dropdown-link:hover,
+body[layout="vertical"] .horizontal-header .horizontal-header-right .set-icon:hover {
+  background: #f6f6f6;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-right .dropdown-badge {
+  height: 48px;
+  color: #000000;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-right .globalization {
+  width: 40px;
+  height: 48px;
+  padding: 11px;
+  color: #000000;
+  cursor: pointer;
+  outline: none;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-right .el-dropdown-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 48px;
+  padding: 10px;
+  color: #000000;
+  cursor: pointer;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-right .el-dropdown-link p {
+  font-size: 14px;
+}
+
+body[layout="vertical"] .horizontal-header .horizontal-header-right .el-dropdown-link img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+body[layout="vertical"] .horizontal-header .el-menu {
+  width: 100% !important;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+body[layout="vertical"] .horizontal-header .el-menu-item,
+body[layout="vertical"] .horizontal-header .el-sub-menu__title {
+  padding-right: var(--el-menu-base-level-padding);
+  color: "rgb(0 0 0 / 60%)";
+}
+
+body[layout="vertical"] .horizontal-header .el-menu-item:hover,
+body[layout="vertical"] .horizontal-header .el-sub-menu__title:hover {
+  color: #000 !important;
+}
+
+body[layout="vertical"] .horizontal-header .submenu-title-noDropdown,
+body[layout="vertical"] .horizontal-header .el-sub-menu__title {
+  height: 48px;
+  line-height: 48px;
+  background: #fff;
+}
+
+body[layout="vertical"] .horizontal-header .submenu-title-noDropdown svg,
+body[layout="vertical"] .horizontal-header .el-sub-menu__title svg {
+  position: static !important;
+}
+
+body[layout="vertical"] .horizontal-header .is-active > .el-sub-menu__title,
+body[layout="vertical"] .horizontal-header .is-active.submenu-title-noDropdown {
+  color: #000000 !important;
+}
+
+body[layout="vertical"] .horizontal-header .is-active > .el-sub-menu__title i,
+body[layout="vertical"] .horizontal-header .is-active.submenu-title-noDropdown i {
+  color: #000000 !important;
+}
+
+body[layout="vertical"] .horizontal-header .is-active {
+  color: #000000 !important;
+  transition: color 0.3s;
+}
+
+body[layout="vertical"] .el-menu--collapse .el-menu .el-sub-menu {
+  min-width: 210px !important;
+}
+
+body[layout="vertical"] .el-menu--collapse {
+  width: 54px;
+}
+
+body[layout="vertical"] .sidebar-logo-container {
+  background: #fff;
+}
+
+body[layout="vertical"] .hideSidebar {
+  /* 菜单折叠 */
+}
+
+body[layout="vertical"] .hideSidebar .fixed-header {
+  width: calc(100% - 54px);
+  transition: width var(--pure-transition-duration);
+}
+
+body[layout="vertical"] .hideSidebar .sidebar-container {
+  width: 54px !important;
+  transition: width var(--pure-transition-duration);
+}
+
+body[layout="vertical"] .hideSidebar .main-container {
+  margin-left: 54px;
+}
+
+body[layout="vertical"] .hideSidebar .el-menu--collapse .el-sub-menu > .el-sub-menu__title > span {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  visibility: visible;
+}
+
+body[layout="vertical"] .hideSidebar .el-menu--collapse .submenu-title-noDropdown {
+  background: transparent !important;
+}
+
+body[layout="vertical"] .hideSidebar .el-menu--collapse .el-sub-menu__title {
+  padding: 0;
+}
+
+body[layout="vertical"] .hideSidebar .sub-menu-icon {
+  margin-right: 0;
+}
+
+body[layout="vertical"] .search-container:hover,
+body[layout="vertical"] .globalization:hover,
+body[layout="vertical"] .fullscreen-icon:hover,
+body[layout="vertical"] .dropdown-badge:hover,
+body[layout="vertical"] .el-dropdown-link:hover,
+body[layout="vertical"] .set-icon:hover {
+  background: #f6f6f6;
+}

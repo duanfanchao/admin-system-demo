@@ -1,0 +1,366 @@
+@charset "UTF-8";
+@keyframes schedule-in-width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes schedule-out-width {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.tags-view {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+  color: var(--el-text-color-primary);
+  background: #fff;
+  box-shadow: 0 0 1px #888;
+  /* 右键菜单 */
+}
+
+.tags-view .scroll-item {
+  position: relative;
+  display: inline-block;
+  height: 34px;
+  padding-left: 6px;
+  line-height: 34px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.tags-view .scroll-item:not(:first-child) {
+  padding-right: 24px;
+}
+
+.tags-view .scroll-item.chrome-item {
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: -18px;
+  box-shadow: none;
+}
+
+.tags-view .scroll-item .el-icon-close {
+  position: absolute;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: var(--el-color-primary);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.12s, color 0.12s;
+  transform: translate(0, -50%);
+}
+
+.tags-view .scroll-item .el-icon-close:hover {
+  color: rgba(0, 0, 0, 0.88) !important;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.tags-view .tag-title {
+  padding: 0 4px;
+  color: var(--el-text-color-primary);
+  text-decoration: none;
+}
+
+.tags-view .scroll-container {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tags-view .scroll-container.chrome-scroll-container {
+  padding-top: 4px;
+}
+
+.tags-view .scroll-container.chrome-scroll-container .fixed-tag {
+  padding: 0 !important;
+}
+
+.tags-view .scroll-container .tab {
+  position: relative;
+  float: left;
+  overflow: visible;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.tags-view .scroll-container .tab .scroll-item {
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.tags-view .scroll-container .tab .scroll-item:nth-child(1) {
+  padding: 0 12px;
+}
+
+.tags-view .scroll-container .tab .scroll-item.chrome-item:nth-child(1) {
+  padding: 0;
+}
+
+.tags-view .scroll-container .tab .fixed-tag {
+  padding: 0 12px;
+}
+
+.tags-view .contextmenu {
+  position: absolute;
+  padding: 5px 0;
+  margin: 0;
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--el-text-color-primary);
+  white-space: nowrap;
+  list-style-type: none;
+  background: #fff;
+  border-radius: 4px;
+  outline: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tags-view .contextmenu li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 7px 12px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.tags-view .contextmenu li:hover {
+  color: var(--el-color-primary);
+}
+
+.tags-view .contextmenu li svg {
+  display: block;
+  margin-right: 0.5em;
+}
+
+.el-dropdown-menu li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.el-dropdown-menu li svg {
+  display: block;
+  margin-right: 0.5em;
+}
+
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  color: #606266;
+  background: #f0f0f0;
+}
+
+:deep(.el-dropdown-menu__item) i {
+  margin-right: 10px;
+}
+
+:deep(.el-dropdown-menu__item--divided) {
+  margin: 1px 0;
+}
+
+.el-dropdown-menu__item--divided::before {
+  margin: 0;
+}
+
+.el-dropdown-menu__item.is-disabled {
+  cursor: not-allowed;
+}
+
+.scroll-item.is-active {
+  position: relative;
+  color: #fff;
+  box-shadow: 0 0 0.7px #888;
+}
+
+.scroll-item.is-active .chrome-tab {
+  z-index: 10;
+}
+
+.scroll-item.is-active .chrome-tab__bg {
+  color: var(--el-color-primary-light-9) !important;
+}
+
+.scroll-item.is-active .tag-title {
+  color: var(--el-color-primary) !important;
+}
+
+.scroll-item.is-active .chrome-close-btn {
+  color: var(--el-color-primary);
+}
+
+.scroll-item.is-active .chrome-close-btn:hover {
+  background-color: var(--el-color-primary);
+}
+
+.scroll-item.is-active .chrome-tab-divider {
+  opacity: 0;
+}
+
+.arrow-left,
+.arrow-right,
+.arrow-down {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 34px;
+  color: var(--el-text-color-primary);
+}
+
+.arrow-left svg,
+.arrow-right svg,
+.arrow-down svg {
+  width: 20px;
+  height: 20px;
+}
+
+.arrow-left {
+  box-shadow: 5px 0 5px -6px #ccc;
+}
+
+.arrow-left:hover {
+  cursor: w-resize;
+}
+
+.arrow-right {
+  border-right: 0.5px solid #ccc;
+  box-shadow: -5px 0 5px -6px #ccc;
+}
+
+.arrow-right:hover {
+  cursor: e-resize;
+}
+
+/* 卡片模式下鼠标移入显示蓝色边框 */
+.card-in {
+  color: var(--el-color-primary);
+}
+
+.card-in .tag-title {
+  color: var(--el-color-primary);
+}
+
+/* 卡片模式下鼠标移出隐藏蓝色边框 */
+.card-out {
+  color: #666;
+  border: none;
+}
+
+.card-out .tag-title {
+  color: #666;
+}
+
+/* 灵动模式 */
+.schedule-active {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--el-color-primary);
+}
+
+/* 灵动模式下鼠标移入显示蓝色进度条 */
+.schedule-in {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--el-color-primary);
+  animation: schedule-in-width 200ms ease-in;
+}
+
+/* 灵动模式下鼠标移出隐藏蓝色进度条 */
+.schedule-out {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--el-color-primary);
+  animation: schedule-out-width 200ms ease-in;
+}
+
+/* 谷歌风格的页签 */
+.chrome-tab {
+  position: relative;
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.chrome-tab .tag-title {
+  padding: 0;
+}
+
+.chrome-tab .chrome-tab-divider {
+  position: absolute;
+  right: 7px;
+  width: 1px;
+  height: 14px;
+  background-color: #2b2d2f;
+}
+
+.chrome-tab:hover {
+  z-index: 10;
+}
+
+.chrome-tab:hover .chrome-tab__bg {
+  color: #dee1e6;
+}
+
+.chrome-tab:hover .tag-title {
+  color: #1f1f1f;
+}
+
+.chrome-tab:hover .chrome-tab-divider {
+  opacity: 0;
+}
+
+.chrome-tab .chrome-tab__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  pointer-events: none;
+}
+
+.chrome-tab .chrome-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: #666;
+  border-radius: 50%;
+}
+
+.chrome-tab .chrome-close-btn:hover {
+  color: white;
+  background-color: #b1b3b8;
+}
