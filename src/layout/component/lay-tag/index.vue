@@ -166,7 +166,7 @@ import { useResize } from "../../hooks/useResize";
 import ICON_FULL_SCREEN_ACTIVE from "@/assets/icon-full-screen-active.png"; // 全屏
 import ICON_EXIT_FULL_SCREEN_ACTIVE from "@/assets/icon-exit-full-screen-active.png"; // 退出全屏
 import ICON_EXIT_FULL_SCREEN from "@/assets/icon-exit-full-screen.png";
-import ICON_FULL_SCREEN from "@/assets/icon-full-screen.png"
+import ICON_FULL_SCREEN from "@/assets/icon-full-screen.png";
 
 export default {
 	name: "layTag",
