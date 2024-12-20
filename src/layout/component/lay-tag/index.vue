@@ -262,12 +262,11 @@ export default {
 			}
 			smoothScroll(offset);
 		};
-		const routes: any = router.options.routes;
 
 		const handleTagStatus = (tag: any) => {
-			const length = getParentPaths(tag.path, routes, "path").length;
+            
 			// “重新加载”只有在右键所在菜单与激活菜单一致时展示
-			if (tag.path === route.path || length === 1) {
+			if (tag.path === route.path) {
 				tagsViews[0].show = true;
 				tagsViews[0].disabled = false;
 			} else {
@@ -299,10 +298,6 @@ export default {
 				tagsViews[3].show = true;
 				tagsViews[3].disabled = false;
 			}
-			if (length === 1) {
-				// 右键菜单为激活菜单，只显示“重新加载”
-				setDropMenuShow(false);
-			}
             // “鼠标右键所在菜单”左右两侧均没有其他标签（首页除外）
             // 显示“关闭当前标签页、关闭全部标签页”
 			if (leftLength === 0 && rightLength === 0) {
@@ -312,7 +307,7 @@ export default {
 				tagsViews[5].disabled = false;
 			}
 		};
-		const openMenu = (tag: RouteItem, e: any): void => {
+		const openMenu = (tag: RouteItem, e: any): void => {            
 			closeMenu();
 			setDropMenuShow(false);
 			handleTagStatus(tag);

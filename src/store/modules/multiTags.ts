@@ -18,23 +18,23 @@ export const useMultiTagsStore = defineStore({
     id: "pure-multiTags",
     state: () => ({
         // 存储标签页信息（路由信息）
-        // multiTags: storageLocal().getItem<StorageConfigs>(
-        //     `${responsiveStorageNameSpace()}configure`
-        // )?.multiTagsCache
-        //     ? storageLocal().getItem<StorageConfigs>(
-        //         `${responsiveStorageNameSpace()}tags`
-        //     )
-        //     : [
-        //         ...constantMenus,
-        //         ...usePermissionStoreHook().flatteningRoutes.filter(
-        //             v => v?.meta?.fixedTag
-        //         )
-        //     ],
-        // multiTagsCache: storageLocal().getItem<StorageConfigs>(
-        //     `${responsiveStorageNameSpace()}configure`
-        // )?.multiTagsCache,
-        multiTags: [],
-        multiTagsCache: [],
+        multiTags: storageLocal().getItem<StorageConfigs>(
+            `${responsiveStorageNameSpace()}configure`
+        )?.multiTagsCache
+            ? storageLocal().getItem<StorageConfigs>(
+                `${responsiveStorageNameSpace()}tags`
+            )
+            : [
+                ...constantMenus,
+                ...usePermissionStoreHook().flatteningRoutes.filter(
+                    v => v?.meta?.fixedTag
+                )
+            ],
+        multiTagsCache: storageLocal().getItem<StorageConfigs>(
+            `${responsiveStorageNameSpace()}configure`
+        )?.multiTagsCache,
+        // multiTags: [],
+        // multiTagsCache: [],
     }),
     getters: {
         getMultiTagsCache(state) {
@@ -45,20 +45,20 @@ export const useMultiTagsStore = defineStore({
         multiTagsCacheChange(multiTagsCache: boolean) {
             this.multiTagsCache = multiTagsCache;
             if (multiTagsCache) {
-                // storageLocal().setItem(
-                //     `${responsiveStorageNameSpace()}tags`,
-                //     this.multiTags
-                // );
+                storageLocal().setItem(
+                    `${responsiveStorageNameSpace()}tags`,
+                    this.multiTags
+                );
             } else {
-                // storageLocal().removeItem(`${responsiveStorageNameSpace()}tags`);
+                storageLocal().removeItem(`${responsiveStorageNameSpace()}tags`);
             }
         },
         tagsCache(multiTags) {
-            // this.getMultiTagsCache &&
-            //     storageLocal().setItem(
-            //         `${responsiveStorageNameSpace()}tags`,
-            //         multiTags
-            //     );
+            this.getMultiTagsCache &&
+                storageLocal().setItem(
+                    `${responsiveStorageNameSpace()}tags`,
+                    multiTags
+                );
         },
         handleTags<T>(
             mode: string,
